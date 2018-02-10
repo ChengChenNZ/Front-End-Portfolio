@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simon games</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="outer-circle round">
+	<div class="corner" id = "green"></div>
+	<div class="corner" id = "red"></div>
+	<div class="corner" id = "yellow"></div>
+	<div class="corner" id = "blue"></div>	
+	<div class="inner-circle round">
+		<h1 class ="brand">SIMON</h1>
 
+		<div class="overlay score hidden">
+			<div class="score-digit">
+			</div>
+		</div>
+
+		<div class="overlay play">
+			<div class="play-button">
+				<i class="fa fa-play" aria-hidden="true"></i>
+			</div>
+		</div>
+
+		<div class="overlay stop hidden">
+			<div class="stop-button">
+				<i class="fa fa-stop" aria-hidden="true"></i>
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+	<div class ="strict">
+		<h3>Strict</h3>
+		<label class="switch">
+			<input type="checkbox" id ="checkbox">
+			<div class ="slider round"></div>
+		</label>
+	</div>
+</body>
+</html>
