@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:400,900|Montserrat:700|Ubuntu+Mono:700');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;;
+	background-color: #313441;
+}
+
+/* outer-circle */
+.outer-circle {
+	height: 330px;
+	width: 330px;
+	margin: 50px auto 20px auto;
+	padding: 20px;
+	background-color: #1F2230;
+}
+
+/*Inner-circle*/
+
+.inner-circle {
+	position: relative;
+	height: 170px;
+	width: 170px;
+	margin: 65px;
+	background-color: #EDF5F7;
+	border: 10px solid #1F2230;
+	transition: 0.5s ease;
+}
+
+.brand {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background-color: #EDF5F7;
+}
+
+.inner-circle h1 {
+	font: 900 37px 'Exo 2',sans-serif;
+	color: #1F2230;
+}
+
+.round {
+	border-radius: 100%;
+}
+
+/*colored  corners*/
+
+.corner {
+	float: left;
+	height: 144px;
+	width:  144px;
+	margin: 3px;
+	transition: .2s ease;
+}
+
+#green {
+	background-color: #99d2b1;
+	border-top-left-radius: 100%;
+}
+
+#green.greenOn {
+	background-color: #D3FFB4;
+	box-shadow: 0px 0px 9px #D3FFB4;
+}
+#red {
+  background-color: #d36870;
+  border-top-right-radius: 100%;
+}
+
+#red.redOn {
+  background-color: #FFB4A6;
+  box-shadow: 0px 0px 9px #FFB4A6;
+}
+
+#yellow {
+  background-color: #f39976;
+  border-bottom-left-radius: 100%;
+}
+
+#yellow.yellowOn {
+  background-color: #FFFEAA;
+  box-shadow: 0px 0px 9px #FFFEAA;
+}
+
+#blue {
+  background-color: #a08acb;
+  border-bottom-right-radius: 100%;
+}
+
+#blue.blueOn {
+  background-color: #82BCF6;
+  box-shadow: 0px 0px 9px #82BCF6;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 100%
+	transition: 0.5s ease;
+	background-color: #1F2230;
+}
