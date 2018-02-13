@@ -48,11 +48,11 @@
 /*colored  corners*/
 
 .corner {
-	float: left;
-	height: 144px;
-	width:  144px;
-	margin: 3px;
-	transition: .2s ease;
+  float: left;
+  height: 144px;
+  width: 144px;
+  margin: 3px;
+  transition: .2s ease;
 }
 
 #green {
@@ -106,3 +106,142 @@
 	transition: 0.5s ease;
 	background-color: #1F2230;
 }
+
+.play,
+.stop {
+	opacity: 0;
+	cursor: pointer;
+}
+
+.play: hover,
+.stop: hover {
+	opacity: 1;
+}
+
+.play-button,
+.stop-button {
+	color: white;
+	background-color: #1F2230;
+	font-size: 85px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+}
+
+.hidden {
+	display: none;
+}
+
+.score-digit {
+	color: white;
+	background-color: #1F2230;
+	font: 700 70px 'Ubantu Mono', monospace;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+}
+
+.strict {
+	width: 230px;
+	margin: 5px auto;
+	padding: 5px 15px;
+	background-color: #1F2230;
+	border-radius: 50px;
+}
+
+.strict h3 {
+	margin-left: 10px;
+	display:  inline-block;
+	font:  700 30px 'Montserrat', sans-serif;
+	background-color: #1F2230;
+	color: #E8E8E8;
+}
+
+.strict {
+  width: 230px;
+  margin: 5px auto;
+  padding: 5px 15px;
+  background-color: #1F2230;
+  border-radius: 50px;
+}
+
+.strict h3 {
+  margin-left: 10px;
+  display: inline-block;
+  font: 700 30px 'Montserrat', sans-serif;
+  background-color: #1F2230;
+  color: #E8E8E8;
+}
+
+/* Slider Switch - Adapted from W3C Tutorial */
+/* The switch - the box around the slider */
+.switch {
+  margin-left: 35px;
+  position: relative;
+  display: inline-block;
+  top: 4px;
+  width: 60px;
+  height: 30px;
+  background-color: #1F2230;
+  cursor: pointer;
+}
+
+.switch input {
+  display: none;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #97A7B3;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #1F2230;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #EB9486;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #EB9486;
+}
+
+input:checked + .slider::before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 30px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+
+
+
