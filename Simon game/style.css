@@ -118,6 +118,11 @@
 	opacity: 1;
 }
 
+.fa-play,
+.fa-stop {
+  background-color: #1F2230;
+}
+
 .play-button,
 .stop-button {
 	color: white;
