@@ -213,3 +213,9 @@ game.start = function(){
 	game.reset();
 	gmae.playSequence(ture);
 };
+
+
+/**
+DOCUMENT READY FUNCTION
+**/
+
