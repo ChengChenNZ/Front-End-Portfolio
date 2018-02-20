@@ -106,7 +106,64 @@ game.playSequence = function(boolean){
 	$(".score-digit").html(game.sequence.length);
 
 	//using a setTimeOut to create a delay in the for loop
+	(function myloop(i) {
+	$("#" + game.sequence[i]).addClass(game.sequence[i] + "on");
+	game.playAudio(game.sequence[i]);
 
+	//set a 0.5s second delay
+	setTimeOut(function(){
+		$("#" + game.sequence[i]).removeClass(game.sequence[i] + "on");
+		game.stopAudio(game.sequence[i]);
+
+		// set another 0.5 second delay before reiterating the function
+		timer = setTimeOut(function(){
+			i++;
+			if (i < game.sequence.length) myloop(i);
+			else {
+				game.playerTurn = turn;
+				$(".corner").css("cursor","pointer");
+			}
+		}, 500);
+	}, 500);	
+	})(0);
+};
+
+//player did not click the right sequence function
+game.wrong = function(){
+	game.sequenceRepeat = ture;//set variable to repeat sequence 
+	//visual cue to show player that they tied to enter a wrong sequence 
+	$("#green").addClass("greenOn");
+	$("#red").addClass("redOn");
+	$("#yellow").addClass("yellowOn");
+	$("blue").addClass("blueOn");
+	$(".score-digit").html("!!");
+	game.audio.wrong.play();
+
+	setTimeOut(function(){
+		$("#green").removeClass("greenOn");
+		$("#red").removeClass("redOn");
+		$("#yellow").removeClass("yellowOn");
+		$("#blue").removeClass("blueOn");
+
+		//reset the game if the game is on strict mode
+		if(game.strict){
+			game.reset();
+			game.playerTurn = false;
+			$(".brand").removeClass("hidden");
+	      $(".play").removeClass("hidden");
+	      $(".stop").addClass("hidden");
+	      $(".score").addClass("hidden");
+	      $(".inner-circle").css("border", "10px solid #1F2230");
+		}
+
+		//otherwise reprat the sequence 
+		if (game.sequenceRepeat) {
+			clearTimeout(timer);
+      		game.playerTurn = false;
+      		$(".corner").css("cursor", "default");
+      		timer = setTimeout(function() {
+       		 game.playSequence(false);
+      }, 500);
+		}
+	}, 500);
 }
-
-
