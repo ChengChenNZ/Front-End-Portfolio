@@ -163,7 +163,53 @@ game.wrong = function(){
       		$(".corner").css("cursor", "default");
       		timer = setTimeout(function() {
        		 game.playSequence(false);
-      }, 500);
+      		}, 500);
 		}
 	}, 500);
 }
+
+//Winning function 
+
+game.win = function(){
+	$(".score-digit").html("WIN");
+	game.audio.victory.play();
+	(function myloop(i){
+		$("#" + game.winSequence[i]).addClass(game.winSequence[i] + "on");
+		game.playAudio(game.winSequence[i]);
+
+		setTimeout(function() {
+      	$("#" + game.winSequence[i]).removeClass(game.winSequence[i] + "On");
+      	game.stopAudio(game.winSequence[i]);
+
+		timer = setTimeout(function(){
+			i++;
+			if(i < game.winSequence.length) myloop(i);
+			else {
+				game.reset();
+				game.playerTurn = false;
+				$(".brand").removeClass("hidden");
+				$(".play").removeClass("hidden");
+				$("stop").addClass("hidden");
+				$("score").addClass("hidden");
+				$(".inner-circle").css("border", "10px solid #1F2230");
+				}
+			}, 500);
+		}, 500);
+	})(0);
+};
+
+//reset the game
+
+game.reset = function(){
+	clearTimeout(timer);
+	game.sequence = [];
+	game.seqCount = 0;
+	game.sequenceRepeat = false;
+};
+
+
+//start game function
+game.start = function(){
+	game.reset();
+	gmae.playSequence(ture);
+};
