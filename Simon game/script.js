@@ -219,3 +219,9 @@ game.start = function(){
 DOCUMENT READY FUNCTION
 **/
 
+
+$(document).ready(function(){
+	//when clicking the whell 
+});
+
+
