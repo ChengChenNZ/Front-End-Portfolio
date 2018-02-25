@@ -79,7 +79,7 @@ game.stopAudio = function(id){
 
 //add swquence function
 game.addSequence = function(){
-	var randomNum = math.floor(Math.random() * 4);
+	var randomNum = Math.floor(Math.random() * 4);
 	switch (randomNum) {
 		case 0:
 			game.sequence.push("green");
@@ -211,7 +211,7 @@ game.reset = function(){
 //start game function
 game.start = function(){
 	game.reset();
-	gmae.playSequence(ture);
+	game.playSequence(true);
 };
 
 
@@ -221,7 +221,77 @@ DOCUMENT READY FUNCTION
 
 
 $(document).ready(function(){
-	//when clicking the whell 
+	//when clicking the whell yo!
+	$(document).mouseup(function(){
+		//only works when it is the player's turn
+		if(game.playerTurn){
+			$("#" + clickedColor).removeClass(clickedColor + "on");
+			game.stopAudio(clickedColor);
+			//check if this is the last move of the sequence
+			if (game.seqCount == game.sequence.length) {
+				//check if this is the winning move of the sequence
+				if (game.seqCount == winnningSequence) {
+					game.win();
+				}else{
+					//show new sequence after half a second
+					game.playerTurn = false;
+					$(".corner").css("cursor", "default");
+					setTimeout(function(){
+						game.playSequence(true);
+					}, 500);
+				}
+			}
+		}
+	});
 });
+
+$(".corner").mousedown(function(){
+	if (game.playerTurn) {
+		clearTimeout(timer);
+		//if click correct color
+		if (game.sequence[game.seqCount] == this.id) {
+			clickedColor = this.id;
+			$(this).addClass(clickedColor + "on");
+			game.playAudio(clickedColor);
+			//increment the seq count
+			game.seqCount++;
+			//if click wrong color
+		}else {
+			game.wrong();
+		}
+	}
+});
+
+
+//create a jquery evnet for main button
+$(".play-button").on("click", function(){
+	$(".brand").addClass("hidden");
+	$(".play").addClass("hidden");
+	$(".stop").removeClass("hidden");
+	$(".score").removeClass("hidden");
+	$(".inner-circle").css("border", "none");
+
+	game.start();
+});
+
+//Jquery for stop button
+$(".stop-button").on("click",function(){
+	clearTimeout(timer);
+	$(".brand").removeClass("hidden");
+	$(".play").removeClass("hidden");
+	$(".stop").addClass("hidden");
+	$(".score").addClass("hidden");
+	$(".inner-circle").css("border", "10px solid #1F2230");
+});
+
+var checkBox = $("#checkbox");
+  $("input").on("click", function() {
+    if (checkBox.is(":checked")) {
+      game.strict = true;
+    } else {
+      game.strict = false;
+    }
+    // console.log(game.strict);
+  });
 
 
