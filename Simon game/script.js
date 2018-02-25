@@ -42,7 +42,7 @@ game.audio.victory = new Audio(
 game.playAudio = function(id){
 	switch(id){
 		case "green":
-			game.audio.green.paly();
+			game.audio.green.play();
 			break;
 		case "red":
 			game.audio.red.play();
@@ -111,16 +111,16 @@ game.playSequence = function(boolean){
 	game.playAudio(game.sequence[i]);
 
 	//set a 0.5s second delay
-	setTimeOut(function(){
+	setTimeout(function(){
 		$("#" + game.sequence[i]).removeClass(game.sequence[i] + "on");
 		game.stopAudio(game.sequence[i]);
 
 		// set another 0.5 second delay before reiterating the function
-		timer = setTimeOut(function(){
+		timer = setTimeout(function(){
 			i++;
 			if (i < game.sequence.length) myloop(i);
 			else {
-				game.playerTurn = turn;
+				game.playerTurn = true;
 				$(".corner").css("cursor","pointer");
 			}
 		}, 500);
@@ -130,7 +130,7 @@ game.playSequence = function(boolean){
 
 //player did not click the right sequence function
 game.wrong = function(){
-	game.sequenceRepeat = ture;//set variable to repeat sequence 
+	game.sequenceRepeat = true;//set variable to repeat sequence 
 	//visual cue to show player that they tied to enter a wrong sequence 
 	$("#green").addClass("greenOn");
 	$("#red").addClass("redOn");
@@ -139,7 +139,7 @@ game.wrong = function(){
 	$(".score-digit").html("!!");
 	game.audio.wrong.play();
 
-	setTimeOut(function(){
+	setTimeout(function(){
 		$("#green").removeClass("greenOn");
 		$("#red").removeClass("redOn");
 		$("#yellow").removeClass("yellowOn");
