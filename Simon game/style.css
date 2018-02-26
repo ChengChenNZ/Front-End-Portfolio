@@ -1,52 +1,56 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2:400,900|Montserrat:700|Ubuntu+Mono:700');
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	background-color: #313441;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #313441;
 }
 
-/* outer-circle */
+/* OUTER-CIRCLE */
 .outer-circle {
-	height: 330px;
-	width: 330px;
-	margin: 50px auto 20px auto;
-	padding: 20px;
-	background-color: #1F2230;
+  height: 330px;
+  width: 330px;
+  margin: 50px auto 20px auto;
+  padding: 15px;
+  background-color: #1F2230;
 }
 
-/*Inner-circle*/
-
+/* ============ */
+/* INNER-CIRCLE */
 .inner-circle {
-	position: relative;
-	height: 170px;
-	width: 170px;
-	margin: 65px;
-	background-color: #EDF5F7;
-	border: 10px solid #1F2230;
-	transition: 0.5s ease;
+  position: relative;
+  height: 170px;
+  width: 170px;
+  margin: 65px;
+  background-color: #EDF5F7;
+  border: 10px solid #1F2230;
+  transition: 0.5s ease;
 }
+
+/* .inner-circle:hover {
+  border: none;
+} */
 
 .brand {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	background-color: #EDF5F7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #EDF5F7;
 }
 
 .inner-circle h1 {
-	font: 900 37px 'Exo 2',sans-serif;
-	color: #1F2230;
+  font: 900 37px 'Exo 2', sans-serif;
+  color: #1F2230;
 }
 
 .round {
-	border-radius: 100%;
+  border-radius: 100%;
 }
 
-/*colored  corners*/
-
+/* ================ */
+/* COLOURED CORNERS */
 .corner {
   float: left;
   height: 144px;
@@ -56,14 +60,20 @@
 }
 
 #green {
-	background-color: #99d2b1;
-	border-top-left-radius: 100%;
+  background-color: #99d2b1;
+  border-top-left-radius: 100%;
 }
 
+/* #green:hover {
+  background-color: #D3FFB4;
+  box-shadow: 0px 0px 9px #D3FFB4;
+} */
+
 #green.greenOn {
-	background-color: #D3FFB4;
-	box-shadow: 0px 0px 9px #D3FFB4;
+  background-color: #D3FFB4;
+  box-shadow: 0px 0px 9px #D3FFB4;
 }
+
 #red {
   background-color: #d36870;
   border-top-right-radius: 100%;
@@ -94,28 +104,34 @@
   box-shadow: 0px 0px 9px #82BCF6;
 }
 
+/* ================================== */
+/* OVERLAY SECTION */
+/* EXTRA CARE NEEDED!!!!! */
+/* ================================== */
+
+/* OVERLAY CONTROL */
 .overlay {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 100%;
-	width: 100%;
-	border-radius: 100%
-	transition: 0.5s ease;
-	background-color: #1F2230;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  transition: .5s ease;
+  background-color: #1F2230;
 }
 
-.play,
+.play, 
 .stop {
-	opacity: 0;
-	cursor: pointer;
+  opacity: 0;
+  cursor: pointer;
 }
 
-.play: hover,
-.stop: hover {
-	opacity: 1;
+.play:hover,
+.stop:hover {
+  opacity: 1;
 }
 
 .fa-play,
@@ -125,47 +141,43 @@
 
 .play-button,
 .stop-button {
-	color: white;
-	background-color: #1F2230;
-	font-size: 85px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
+  color: white;
+  background-color: #1F2230;
+  font-size: 85px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
+
+/* OVERLAY COUNTER  */
+/* .score {
+  opacity: 0;
+} */
 
 .score-digit {
-	color: white;
-	background-color: #1F2230;
-	font: 700 70px 'Ubantu Mono', monospace;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	-ms-transform: translate(-50%,-50%);
+  color: white;
+  background-color: #1F2230;
+  font: 700 70px 'Ubuntu Mono', monospace;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
-.strict {
-	width: 230px;
-	margin: 5px auto;
-	padding: 5px 15px;
-	background-color: #1F2230;
-	border-radius: 50px;
-}
+/* ================================== */
+/* END OF OVERLAY SECTION */
+/* EXTRA CARE NEEDED!!!!! */
+/* ================================== */
 
-.strict h3 {
-	margin-left: 10px;
-	display:  inline-block;
-	font:  700 30px 'Montserrat', sans-serif;
-	background-color: #1F2230;
-	color: #E8E8E8;
-}
-
+/* ===================== */
+/* STRICT TOGGLE CONTROL */
 .strict {
   width: 230px;
   margin: 5px auto;
@@ -247,6 +259,14 @@ input:checked + .slider::before {
   border-radius: 50%;
 }
 
+/* ================= */
+/* Signature */
 
+.signature {
+  margin: 50px auto;
+  text-align: center;
+}
 
-
+.signature p {
+  font: 400 14px 'Exo 2', sans-serif;
+}
