@@ -104,6 +104,6 @@ app.post("/campground/:id/comments", function(req,res){
 //connect ne commetn to campground
 //redirect campground show page
 
-app.listen(process.envPORT, process.env.IP, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
 	console.log("The YelpCamp server has started");
 });
