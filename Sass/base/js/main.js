@@ -17,4 +17,6 @@ jQuery(document).ready(function($) {
       e.preventDefault();
       showSidebar();
     });
+    jQuery(".headline").fitText();
 });
+

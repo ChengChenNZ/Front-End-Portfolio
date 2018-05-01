@@ -10,14 +10,17 @@
 // Mixin for creating pill shaped buttons
 // ====================================================================
 
-@mixin button-links($button-base: darken($color11,10%),$button-hover: darken($color11,15%)) {
-	border: 1px solid darken($color11,16%);
+@mixin button-links($button-base: darken($color11,10%),$button-hover: darken($color11,95%)) {
+	//border: 1px solid darken($color11,6%);
+	border: 0;
 	padding: .3em .6em;
 	margin-left: .7em;
-	@include border-radius(8px);
+	text-decoration: none;
+	@include border-radius(3px);
 	@include text-shadow(0 1px 2px $color11);
-	color: lighten($color10,50%);
+	color: darken($color-link, 20%);
 	background-color: $button-base;
+	@extend %single-transition;
 	&:hover {
 		background-color: $button-hover;
 	}

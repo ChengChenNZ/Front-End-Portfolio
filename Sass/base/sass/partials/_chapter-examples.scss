@@ -1,52 +1,219 @@
-// additional rules to show the @extend directive at work
-
-.clearfix-please {
-	@extend %clearfix;
-}
-.ooh-clearfix-here-too {
-	@extend %clearfix;
-}
-.and-me {
-	@extend %clearfix;
+// Compass Hide Text Mixin
+.hide-text {
+	@include hide-text;
 }
 
-// examples of color functions (adjust nth-child position to suit)
-&:nth-child(1) a {
-	background-color: $color1;
+// Compass Squish Text Mixin
+.squish-text {
+	@include squish-text;
 }
-&:nth-child(2) a {
-	background-color: adjust-color($color1,$lightness:-20%);
+
+// HTML5 Boilerplate image replacement classes:
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
 }
-&:nth-child(3) a {
-	background-color: scale-color($color1,$lightness:-20%);
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
 }
-&:nth-child(4) a {
-	background-color: shade($color1,60%);
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
 }
-&:nth-child(5) a {
-	background-color: tint($color1,60%);
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
-&:nth-child(2) a {
-	background-color: complement($color1);
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
 }
-&:nth-child(3) a {
-	background-color: adjust-hue($color1, 90deg);
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
 }
-&:nth-child(4) a {
-	background-color: desaturate($color1, 80%);
+
+// Multiple columns
+// ====================================================================
+.two-cols {
+    @include column-count(3);
+    @include column-rule(1px, dotted, lighten($color10, 84%));
 }
-&:nth-child(5) a {
-	background-color: adjust-color($color1, $red:40, $green: 20);
+
+// Background images
+// ====================================================================
+.buy-amazon-us {
+	@extend %block;
+	background-image: image-url("amazon-com.svg");
+	background-size: 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	height: 50px;
 }
-&:nth-child(6) a {
-	background-color: transparentize($color1, .5);
+
+// Variation - automatically get and set the image dimensions
+.buy-amazon-uk {
+	@extend %block;
+	background-image: image-url("amazon-co-uk.png");
+	background-size: image-width("amazon-co-uk.png") image-height("amazon-co-uk.png");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	// This gets the images actual height
+	height: image-height("amazon-co-uk.png");
+	// This gets the images actual width
+	width: image-width("amazon-co-uk.png");
 }
-&:nth-child(7) a {
-	background-color: grayscale($color1);
+
+// Making an image sprite sheet
+// ====================================================================
+
+// Create the sprite sheet
+$buy-spacing: 20px;
+$buy-sprite-dimensions: true;
+$buy-layout:horizontal;
+@import "buy/*.png";
+@include all-buy-sprites;
+
+// Create a variable for width and height based on an individual image
+$buy-height: buy-sprite-height(amazon-uk);
+$buy-width: buy-sprite-width(amazon-uk);
+
+// Set the width and height for the elements that need to show the background images
+[class^="buy-"] {
+	@extend %block;
+	height: $buy-height;
+	width: $buy-width;
 }
-&:nth-child(8) a {
-	background-color: mix($color1,$color2,60%);
+
+// Auto replace text with a certain image (adds image width and height automatically)
+// ====================================================================
+
+.ir {
+	@include replace-text-with-dimensions('buy/amazon-uk.png');
 }
-&:nth-child(9) a {
-	background-color: rgba((mix$color1,$color2,60%)),.7);
+
+// ====================================================================
+// Fonts - don't work well cross-browser at present (Compass v12.2). Use with caution!!
+// ====================================================================
+
+// A standard font stack
+// ====================================================================
+
+@include font-face("SansationLight", font-files("Sansation/Sansation_Regular-webfont.eot", "Sansation/Sansation_Light-webfont.eot?#iefix", "Sansation/Sansation_Light-webfont.woff", "Sansation/Sansation_Light-webfont.ttf","Sansation/Sansation_Regular-webfont.svg#SansationRegular"));
+
+// Inlining a font stack
+// ====================================================================
+
+@include font-face("SansationLight", inline-font-files("Sansation/Sansation_Regular-webfont.eot", "Sansation/Sansation_Light-webfont.eot?#iefix", "Sansation/Sansation_Light-webfont.woff", "Sansation/Sansation_Light-webfont.ttf","Sansation/Sansation_Regular-webfont.svg#SansationRegular"));
+
+// ====================================================================
+// Background gradient syntax
+// ====================================================================
+
+// Linear gradient
+// ====================================================================
+
+@include background(linear-gradient(to right, blue 0px, purple 40px, orange 150px, red 100%));
+
+// Radial gradient
+// ====================================================================
+
+@include background-image(radial-gradient(100% circle, pink 15%, red 100%));
+
+// 2D Transforms
+// ====================================================================
+
+@include scale(2,2); // Make it twice original size
+
+@include translateX(20px); // Move the item 20px to the right
+
+// Alternate triangle technique code
+// ====================================================================
+&:before {
+    content:"\00a0";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 50%;
+    right: 0%;
+    margin-top: -5px;
+    margin-right: -10px;
+}
+&:after {
+    content:"\00a0";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 50%;
+    right: 0%;
+    margin-top: -4px;
+    margin-right: -8px;
+}
+
+.intro {
+    .chapter-summary {
+        &:nth-child(1) {
+            @include background(
+                linear-gradient(to right, transparentize(complement($color-pink), .8) 0px, complement($color-pink) 96%, darken(complement($color-pink), 10%) 96%, darken(complement($color-pink), 10%) 99%,
+                    $color11 100%));
+            &:before {
+                border-color: transparent transparent transparent $color11;
+                border-style: solid;
+                border-width: 6px 0 6px 12px;
+                @include box-shadow(#ccc 1px 1px 2px);
+            }
+            &:after {
+                border-color: transparent transparent transparent darken(complement($color-pink), 10%);
+                border-style: solid;
+                border-width: 5px 0 5px 10px;
+            }
+            @include box-shadow(#ccc 1px 1px 2px);
+        }
+    }
 }
