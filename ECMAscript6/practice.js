@@ -80,12 +80,20 @@ var id = 21;
 
 foo.call({id: 42})
 
+//尾递归调用
 
+function factorial(n) {
+	if (n === 1) return 1;
+	return n * factorial(n - 1);
+}
 
+factorial(5);
 
-
-
-
+//改为尾递归 机智
+function fatorial(n, total) {
+	if (n === 1) return total;
+	return factorial(n-1, n * total);
+}
 
 
 
