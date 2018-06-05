@@ -46,4 +46,51 @@ fuction add(...values) {
 
 add(2,5,3);
 
+//一个rest 参数替代arguments变量的例子
+function sortNumbers () {
+	return Array.prototype.slice.call(arguments).sort();
+}
+
+cost sortNumbers = (...numbers) => numbers.sort();
+
+
+//箭头函数
+
+var f = v => v;
+
+//equals
+var f = function(v) {
+	return v;
+}
+
+//如果箭头函数不需要参数或者多个参数 用一个圆括号代表参数
+var f = () => 5;
+
+var f  = function () {return 5};
+
+//在箭头函数里 this 对象的指向是可变的但在箭头函数里他是固定的
+
+function foo () {
+	setTimeout(() => {
+		console.log('id',this.id);
+	}, 100);
+}
+
+var id = 21;
+
+foo.call({id: 42})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
