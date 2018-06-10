@@ -95,8 +95,58 @@ function fatorial(n, total) {
 	return factorial(n-1, n * total);
 }
 
+//扩展运算替代函数apply方法
+function f(x, y, z){
+	//..
+}
+let args = [0, 1, 2];
+f(...args);
 
+//call, apply 的作用 定义一个构造函数然后改变指向
+function Fn() {
+	Fn.prototype = {
+		color: 'red',
+		say:function(){
+			alert(this.color);
+		}
+	};
+	var Fn = new Fn();
+	Fn.say();	
+}
 
+var Fn1 = {
+	color:'yellow'
+};
+
+var fn = new Fn();
+fn.say.call(Fn1);
+fn.say.apply(Fn1);
+
+// 如何克隆一个数组
+const a1 = [1, 2];
+
+const a2 = [...a1];
+
+const [...a2] = a1;
+
+//扩张运算符可以字符串转为真正的数组
+[...'hello']
+
+// for of 循环一个生成器
+function fibonacci() {
+	let [prev, curr] = [0, 1];
+	while(ture){
+		[prev, curr] = [curr, prev + curr];
+		yield curr;
+	}
+}
+
+for (let n of fibonacci()) {
+	console.log(n);
+	// truncate the sequence at 1000
+	if(n >= 1000)
+		break;
+}
 
 
 
