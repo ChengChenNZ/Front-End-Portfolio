@@ -148,6 +148,11 @@ for (let n of fibonacci()) {
 		break;
 }
 
+//作为属性名的Symbol
+let sym = Symbol();
+let a = {};
+a[sym] = "hello";
+alert(a[sym]);
 
 
 
